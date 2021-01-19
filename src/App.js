@@ -12,17 +12,16 @@ function App() {
   useEffect(() => {
     async function fetchingData() {
       const data = await fetchData();
-      setData(data.data);
+      setData(data.data[0]);
     }
 
     fetchingData()
   }, [])
   
-  console.log("State:-",data)
 
   return (
     <div className="app">
-      <Cards data = {data} />
+      <Cards data={data} />
       <CountryPicker />
       <Chart />
     </div>

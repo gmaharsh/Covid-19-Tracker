@@ -1,9 +1,4 @@
 .cards {
   margin: 50px 0;
-  /* background: red; */
-}
-
-.cards > .card {
-  margin: 10px 10px;
-  background: red;
+  font-size: 20px;
 }

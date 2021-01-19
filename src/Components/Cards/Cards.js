@@ -4,31 +4,31 @@ import { Card, CardContent, Typography, Grid } from "@material-ui/core";
 import CountUp from 'react-countup';
 
 function Cards({ data }) {
-    console.log(data.recovered)
-    if (!data.cases) {
+    console.log("New Data In cards:-", data)
+    if (!data.totalTestResults) {
         return (
             <h1>Loading</h1>
         )
     } else {
         return (
             <div className="cards">
-                <Grid container spacing={3} justify="center">
+                <Grid container spacing={3} >
                     <Grid item component={Card} xs={12} md={3} style={{ margin: "20px", borderBottom: "10px solid rgba(0,0,255,0.5)"}}>
                         <CardContent>
                             <Typography color="textSecondary" gutterBottom>Infected</Typography>
                             <Typography variant="h5">
                                 <CountUp
                                     start={0}
-                                    end={data.cases}
+                                    end={data.totalTestResults}
                                     duration={2.5}
                                     separator=","
                                 />
                             </Typography>
-                            <Typography color="textSecondary"></Typography>
+                            <Typography color="textSecondary">{(data.dateChecked).split('T')[0]}</Typography>
                             <Typography variant="body2">
                                 <CountUp
                                     start={0}
-                                    end={data.active}
+                                    end={data.negative}
                                     duration={2.5}
                                     separator=","
                                 />
@@ -41,13 +41,20 @@ function Cards({ data }) {
                             <Typography variant="h5">
                                 <CountUp
                                     start={0}
-                                    end={data.recovered}
+                                    end={data.negative}
                                     duration={2.5}
                                     separator=","
                                 />
                             </Typography>
-                            <Typography color="textSecondary">Real Date</Typography>
-                            <Typography variant="body2">Number of recovered cases</Typography>
+                            <Typography color="textSecondary">{(data.dateChecked).split('T')[0]}</Typography>
+                            <Typography variant="body2">
+                                <CountUp
+                                    start={0}
+                                    end={data.negativeIncrease}
+                                    duration={2.5}
+                                    separator=","
+                                />
+                            </Typography>
                         </CardContent>
                     </Grid>
                     <Grid item component={Card} xs={12} md={3} style={{margin:"20px",borderBottom: "10px solid rgba(255,0,0,0.5)"}}>
@@ -56,16 +63,16 @@ function Cards({ data }) {
                             <Typography variant="h5">
                                 <CountUp
                                     start={0}
-                                    end={data.deaths}
+                                    end={data.death}
                                     duration={2.5}
                                     separator=","
                                 />
                             </Typography>
-                            <Typography color="textSecondary">Real Date</Typography>
+                            <Typography color="textSecondary">{(data.dateChecked).split('T')[0]}</Typography>
                             <Typography variant="body2">
                                 <CountUp
                                     start={0}
-                                    end={data.todayDeaths}
+                                    end={data.deathIncrease}
                                     duration={2.5}
                                     separator=","
                                 />
